@@ -33,6 +33,6 @@ export class App {
       return;
     }
     navigator.clipboard.writeText(this.outputText);
-    this.snackBar.open('Text copied to clipboard!', 'Dismiss', {duration: 1000});
+    this.snackBar.open('Text copied!', 'Dismiss', {duration: 1000});
   }
 }
