@@ -1,0 +1,42 @@
+<div class="page">
+  <header class="hero">
+    <h1 class="logo">TextCloak.ai</h1>
+    <p class="tagline">Anonymize sensitive text before sharing it with AI.</p>
+    <p class="privacy-note">
+      No accounts. No storage. No memory. Your text is not stored, logged, or used for training.
+    </p>
+  </header>
+
+  <main class="main">
+    <div class="textarea-grid">
+      <div class="textarea-group">
+        <label for="input-text" class="label">Original text</label>
+        <textarea
+          id="input-text"
+          class="textarea"
+          placeholder="Paste sensitive text here..."
+          [(ngModel)]="inputText">
+        </textarea>
+        <button class="btn-primary action-button" (click)="anonymize()">Anonymize</button>
+      </div>
+
+      <div class="textarea-group">
+        <label for="output-text" class="label">Anonymized text</label>
+        <textarea
+          id="output-text"
+          class="textarea textarea--output"
+          placeholder="Anonymized text will appear here..."
+          [value]="outputText"
+          readonly>
+        </textarea>
+
+        <button class="btn-primary action-button" (click)="copyText()" [disabled]="isCopyDisabled()">Copy result</button>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <a href="mailto:branislav.vidoivc.ba@gmail.com" class="footer-link">Contact</a>
+  </footer>
+</div>
