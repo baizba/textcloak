@@ -8,14 +8,14 @@ A privacy-first text anonymizer landing/MVP page. Paste sensitive text, click **
 - **SCSS** — plain component-scoped styles, no UI framework
 - **Netlify** — static hosting with SPA redirect fallback
 
-## Run locally
+## Run locally – frontend
 
 ```bash
 npm install
 npm start
 ```
 
-Open [http://localhost:4200](http://localhost:4200).
+Open [http://localhost:4200](http://localhost:4200)
 
 ## Build
 
