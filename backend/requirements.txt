@@ -1,1 +1,3 @@
 fastapi[standard]==0.138.0
+presidio_analyzer[transformers]==2.2.362
+presidio_anonymizer==2.2.362
