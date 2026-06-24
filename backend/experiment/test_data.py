@@ -1,4 +1,4 @@
-test_data: list[str] = [
+clean_data: list[str] = [
     "My name is Branislav and my phone number is 0676 669 6666.",
     "Mr John went to New York and then he visited Graz in Austria. After that he traveled to Postojna in nearby Slovenia.",
     "He is a good christian and his name is Christian but his address is Moserhofgasse 45, 8010 Graz",
@@ -37,17 +37,17 @@ test_data: list[str] = [
     "Email john@doe.com appears twice: john@doe.com should get the same placeholder.",
 ]
 
-expected_anonymized: list[str] = [
+expected_anonymized_data: list[str] = [
     "My name is <PERSON> and my phone number is <PHONE_NUMBER>.",
     "Mr <PERSON> went to <LOCATION> and then he visited <LOCATION> in <LOCATION>. After that he traveled to <LOCATION> in nearby <LOCATION>.",
-    "He is a good christian and his name is Christian but his address is <LOCATION> 45, 8010 <LOCATION>",
-    "What are you doing Christian? Are you talking to <PERSON>?",
+    "He is a good christian and his name is <PERSON> but his address is <LOCATION> 45, 8010 <LOCATION>",
+    "What are you doing <PERSON>? Are you talking to <PERSON>?",
     "Marc has an email <EMAIL_ADDRESS> but i dont know if <PERSON> is in <LOCATION>.",
 
-    "Anna lives at <LOCATION> 12, 8010 <LOCATION> and her email is <EMAIL_ADDRESS>.",
+    "<PERSON> lives at <LOCATION> 12, 8010 <LOCATION> and her email is <EMAIL_ADDRESS>.",
     "Please call <PERSON> on <PHONE_NUMBER> before she leaves <LOCATION>.",
-    "Luka sent the invoice to <EMAIL_ADDRESS> from <LOCATION> yesterday.",
-    "Maja works for <ORGANIZATION> in <LOCATION> and her IBAN is <IBAN_CODE>.",
+    "<PERSON> sent the invoice to <EMAIL_ADDRESS> from <LOCATION> yesterday.",
+    "<PERSON> works for <ORGANIZATION> in <LOCATION> and her IBAN is <IBAN_CODE>.",
     "<PERSON> and <PERSON> are meeting at <LOCATION> 88, 1070 <LOCATION>.",
     "My colleague <PERSON> said that <LOCATION> is expensive in May.",
     "<PERSON> asked <PERSON> if <PERSON> had already visited <LOCATION>.",
@@ -56,7 +56,7 @@ expected_anonymized: list[str] = [
     "Please anonymize this: <PERSON>, <LOCATION> 4, 10000 <LOCATION>.",
     "The server at <IP_ADDRESS> belongs to <PERSON> from the <LOCATION> office.",
     "Send the report to <EMAIL_ADDRESS> and copy <PERSON>.",
-    "Jelena moved from <LOCATION> to <LOCATION> and now works for <ORGANIZATION>.",
+    "<PERSON> moved from <LOCATION> to <LOCATION> and now works for <ORGANIZATION>.",
     "The card number <CREDIT_CARD> belongs to <PERSON>.",
     "Our client <PERSON> lives near <LOCATION> but works for <ORGANIZATION>.",
     "I spoke with <ORGANIZATION> yesterday, not the car company but a person.",
