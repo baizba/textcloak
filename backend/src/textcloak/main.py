@@ -9,6 +9,7 @@ from textcloak.models import AnonymizeRequest, AnonymizeResponse
 ALLOWED_ORIGINS = [
     "http://localhost:4200",
     "https://textcloak.ai",
+    "https://www.textcloak.ai"
 ]
 
 app = FastAPI()

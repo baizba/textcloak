@@ -8,9 +8,9 @@ class AnonymizationPipeline:
         self.analyzers = analyzers
 
     def analyze(self, text: str) -> list[RecognizerResult]:
-        result: list[RecognizerResult] = []
+        results: list[RecognizerResult] = []
 
         for analyzer in self.analyzers:
-            result.extend(analyzer.analyze(text=text))
+            results.extend(analyzer.analyze(text=text))
 
-        return result
+        return results
