@@ -15,9 +15,10 @@
           id="input-text"
           class="textarea"
           placeholder="Paste sensitive text here..."
-          [(ngModel)]="inputText">
+          [ngModel]="inputText()"
+          (ngModelChange)="inputText.set($event)">
         </textarea>
-        <button class="btn-primary action-button" (click)="anonymize()">Anonymize</button>
+        <button type="button" class="btn-primary action-button" (click)="anonymize()">Anonymize</button>
       </div>
 
       <div class="textarea-group">
@@ -26,7 +27,7 @@
           id="output-text"
           class="textarea textarea--output"
           placeholder="Anonymized text will appear here..."
-          [value]="outputText"
+          [ngModel]="outputText()"
           readonly>
         </textarea>
 

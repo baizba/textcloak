@@ -1,6 +1,8 @@
-import {Component, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AnonymizationService } from './services/anonymization-service';
+import { AnonymizeRequest } from './model/models';
 
 @Component({
   selector: 'app-root',
@@ -9,30 +11,41 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './app.scss',
 })
 export class App {
-  inputText = '';
-  outputText = '';
+  inputText = signal('');
+  outputText = signal('');
 
-  constructor(private snackBar: MatSnackBar) {
-  }
+  private snackBar = inject(MatSnackBar);
+  private anonymizationService = inject(AnonymizationService);
 
   anonymize(): void {
-    if (!this.inputText || this.inputText.trim().length === 0) {
+    const text = this.inputText();
+    if (!text || text.trim().length === 0) {
       return;
     }
 
-    this.outputText = this.inputText;
-    alert('Demo mode: Real anonymization backend coming soon!');
+    const request: AnonymizeRequest = { text };
+
+    this.anonymizationService.anonymize(request).subscribe({
+      next: (response) => {
+        this.outputText.set(response.anonymizedText);
+      },
+      error: (error) => {
+        console.error('Anonymization failed:', error);
+        this.snackBar.open('Anonymization failed!', 'Dismiss', { duration: 1000 });
+      },
+    });
   }
 
   isCopyDisabled(): boolean {
-    return !this.outputText || this.outputText.trim().length === 0;
+    const text = this.outputText();
+    return !text || text.trim().length === 0;
   }
 
   protected copyText() {
     if (this.isCopyDisabled()) {
       return;
     }
-    navigator.clipboard.writeText(this.outputText);
-    this.snackBar.open('Text copied!', 'Dismiss', {duration: 1000});
+    navigator.clipboard.writeText(this.outputText());
+    this.snackBar.open('Text copied!', 'Dismiss', { duration: 1000 });
   }
 }
