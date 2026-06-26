@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from textcloak.models import AnonymizeRequest
+from textcloak.anonymizer.anonymization_pipeline import AnonymizationPipeline
+from textcloak.anonymizer.anonymization_service import AnonymizationService
+from textcloak.anonymizer.nlp_analyzer import NlpAnalyzer
+from textcloak.models import AnonymizeRequest, AnonymizeResponse
 
 # Origins allowed to call the API. localhost:4200 is the Angular dev server,
 # textcloak.ai is the production frontend.
@@ -20,6 +23,10 @@ app.add_middleware(
 
 
 @app.post("/anonymize")
-async def anonymize(payload: AnonymizeRequest):
-    # TODO: replace with real anonymization logic.
-    return {"text": payload.text}
+async def anonymize(payload: AnonymizeRequest) -> AnonymizeResponse:
+    service = AnonymizationService(
+        pipeline=AnonymizationPipeline(
+            analyzers=[NlpAnalyzer()]
+        )
+    )
+    return service.anonymize(payload.text)

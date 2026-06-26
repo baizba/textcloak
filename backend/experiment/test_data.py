@@ -35,6 +35,7 @@ clean_data: list[str] = [
     "The user Victoria has an address in Victoria Street, London.",
     "Can you ask Roman whether he is actually in Rome or just working remotely?",
     "Email john@doe.com appears twice: john@doe.com should get the same placeholder.",
+    "Senga Marielouise Otazo will be in charge of coordinating the logistics with +446-58.164.4777."
 ]
 
 expected_anonymized_data: list[str] = [
@@ -42,7 +43,7 @@ expected_anonymized_data: list[str] = [
     "Mr <PERSON> went to <LOCATION> and then he visited <LOCATION> in <LOCATION>. After that he traveled to <LOCATION> in nearby <LOCATION>.",
     "He is a good christian and his name is <PERSON> but his address is <LOCATION> 45, 8010 <LOCATION>",
     "What are you doing <PERSON>? Are you talking to <PERSON>?",
-    "Marc has an email <EMAIL_ADDRESS> but i dont know if <PERSON> is in <LOCATION>.",
+    "<PERSON> has an email <EMAIL_ADDRESS> but i dont know if <PERSON> is in <LOCATION>.",
 
     "<PERSON> lives at <LOCATION> 12, 8010 <LOCATION> and her email is <EMAIL_ADDRESS>.",
     "Please call <PERSON> on <PHONE_NUMBER> before she leaves <LOCATION>.",
@@ -74,4 +75,5 @@ expected_anonymized_data: list[str] = [
     "The user <PERSON> has an address in <LOCATION>, <LOCATION>.",
     "Can you ask <PERSON> whether he is actually in <LOCATION> or just working remotely?",
     "Email <EMAIL_ADDRESS> appears twice: <EMAIL_ADDRESS> should get the same placeholder.",
+    "<PERSON> will be in charge of coordinating the logistics with <PHONE_NUMBER>."
 ]
